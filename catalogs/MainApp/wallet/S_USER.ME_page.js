@@ -1,4 +1,5 @@
 var global = require("global");
+var bookmark = require("bookmark");
 
 var __last_discussion = null;
 
@@ -12,6 +13,7 @@ function on_loaded() {
             "post-count":user.get_post_count().toString(),
             "following-count":user.get_following_count().toString(),
             "follower-count":user.get_follower_count().toString(),
+            "bookmark-count":bookmark.count(value["username"]).toString(),
             "steem-balance":user.get_steem_balance().toFixed(3).toString(),
             "steem-power":user.get_steem_power().toFixed(3).toString(),
             "sbd-balance":user.get_sbd_balance().toFixed(3).toString(),

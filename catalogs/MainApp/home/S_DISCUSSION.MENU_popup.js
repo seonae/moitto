@@ -1,4 +1,43 @@
 var account = require("account");
+var bookmark = require("bookmark");
+
+function add_bookmark(form) {
+    if (account.is_logged_in()) {
+        var username = account.get_username();
+        var author = $data["author"];
+        var permlink = $data["permlink"];
+
+        bookmark.add(username, author, permlink, $data);
+
+        controller.action("toast", { "message":"북마크 되었습니다." });
+        controller.action("popup-close");
+    } else {
+        controller.action("subview", { 
+            "subview":"V_LOGIN", 
+            "target":"popup",
+            "close-popup":"yes" 
+        });
+    }
+}
+
+function remove_bookmark(form) {
+    if (account.is_logged_in()) {
+        var username = account.get_username();
+        var author = $data["author"];
+        var permlink = $data["permlink"];
+
+        bookmark.remove(username, author, permlink);
+
+        controller.action("toast", { "message":"북마크를 해제하였습니다." });
+        controller.action("popup-close");
+    } else {
+        controller.action("subview", { 
+            "subview":"V_LOGIN", 
+            "target":"popup",
+            "close-popup":"yes" 
+        });
+    }
+}
 
 function upvote(form) {
     if (account.is_logged_in()) {

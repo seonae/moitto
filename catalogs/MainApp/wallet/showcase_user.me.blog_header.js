@@ -24,3 +24,12 @@ function show_followers() {
 
     controller.action("page", { "display-unit":"S_FOLLOWERS", "target":"popup" });
 }
+
+function show_bookmarks() {
+    controller.catalog().submit("showcase", "auxiliary", "S_USER.BOOKMARKS", {
+        "username":$data["username"],
+        "fetched":"no"
+    });
+
+    controller.action("page", { "display-unit":"S_USER.BOOKMARKS", "target":"popup" });
+}

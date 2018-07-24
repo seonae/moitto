@@ -18,3 +18,9 @@ if "${vote-weight}" != 0
 else
     #voted: display=none, width=0, height=0
 end
+
+if "${bookmarked}" == "yes"
+	#btn_bookmark: label="북마크 해제", script=remove_bookmark
+else
+	#btn_bookmark: label="북마크", script=add_bookmark
+end
